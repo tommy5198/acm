@@ -21,6 +21,20 @@ void post(Node *n){
         free(n->R);
     printf("%d\n", n->num);
 }
+
+void add(Node *now, Node *n){
+    if(now->num > n->num){
+        if(now->L)
+            add(now->L, n);
+        else
+            now->L = n;
+    }else{
+        if(now->R)
+            add(now->R, n);
+        else
+            now->R = n;
+    }
+}
 int main(){
     int tmp;
     scanf("%d", &tmp);
@@ -30,18 +44,7 @@ int main(){
     while(scanf("%d", &tmp) != EOF){
         next = (Node*)malloc(sizeof(Node));
         next->init(tmp);
-
-        if(tmp < now->num){
-            next->P = now;
-            now->L = next;
-            now = next;
-        }else{
-            while(now->P && now->P->num > tmp)
-                now = now->P;
-            next->P = now;
-            now->R = next;
-            now = next;
-        }
+        add(root, next);
     }
     post(root);
     free(root);
