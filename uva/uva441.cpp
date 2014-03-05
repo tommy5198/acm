@@ -3,9 +3,8 @@
 
 using namespace std;
 int k;
-int used[14];
-int num[14];
-int ans[6];
+int used[12];
+int num[12];
 
 void btk(int x,int a){
     if(x==k&&a!=6)
@@ -27,7 +26,6 @@ void btk(int x,int a){
     used[x]=1;
     btk(x+1,a+1);
     used[x]=0;
-
     btk(x+1,a);
 }
 
@@ -45,8 +43,7 @@ int main()
             used[i]=0;
             scanf("%d",&num[i]);
         }
-        int a=0,x=0;
-        btk(x,a);
+        btk(0, 0);
 
     }
     return 0;
