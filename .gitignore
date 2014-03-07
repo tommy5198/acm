@@ -3,3 +3,6 @@
 *.in
 *.out
 *.txt
+
+uva/unsolved/in.txt
+*.txt
