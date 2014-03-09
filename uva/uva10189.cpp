@@ -5,6 +5,7 @@ using namespace std;
 
 int main(){
     int x,y,t=1;
+    std::ios_base::sync_with_stdio(false);
     while(cin>>y>>x){
         if(!x&&!y)
             break;

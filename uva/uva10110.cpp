@@ -9,6 +9,7 @@ using namespace std;
 
 int main(){
     unsigned int n;
+    std::ios_base::sync_with_stdio(false);
     while(cin>>n){
         if(!n)
             break;

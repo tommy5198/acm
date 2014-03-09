@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-
+    std::ios_base::sync_with_stdio(false);
     string a,b;
     while(cin>>b>>a){
         int i,j=0;

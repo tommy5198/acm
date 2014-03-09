@@ -1,28 +1,20 @@
 #include<cstdio>
 #include<vector>
+#include<algorithm>
 using namespace std;
 int n, k;
 vector<int> v[101], b;
 int color[101];
-bool DFS(int now, int nowc){
-    int nextc = nowc==1?2:1;
-    color[now] = nowc;
-    printf("%d %d", now, nowc);
-    for(int i=0; i<v[now].size(); i++){
-        if(color[v[now][i]] == 1 || color[v[now][i]] == 0 && !DFS(v[now][i], nextc) ){
-            color[now] = 0;
-            return false;
-        }
-    }
-    return true;
-}
+bool vis[101];
+int ans[100];
+int sum;
 void init(){
     scanf("%d%d", &n, &k);
     for(int i=1; i<=n; i++){
         v[i].clear();
         color[i] = 0;
     }
-    b.clear();
+    sum = 0;
     for(int i=0; i<k; i++){
         int x, y;
         scanf("%d%d", &x, &y);
@@ -30,20 +22,31 @@ void init(){
         v[y].push_back(x);
     }
 }
+
+void btrack(int now, int d, int bsum){
+
+    color[now] = 1;
+    int cnt = 0;
+    for(int i=0; i<v[now].size(); i++){
+        if(!color[v[now][i]]) cnt++;
+            color[v[now][i]] = 2;
+    }
+    for(int i=1; i<n; i++)
+        if(!color[i])
+            btrack(i, d+1+cnt, bsum+1);
+
+}
+
 int main(){
     int m;
+    freopen("t.in", "r", stdin);
     scanf("%d", &m);
     while(m--){
         init();
-        for(int i=1; i<n; i++){
-            if(!color[i]){
-                int tmp = DFS(i, 0);
-
-            }
-        }
-        printf("%d\n%d", b.size(), b[0]);
-        for(int i=1; i<b.size(); i++)
-            printf(" %d", b[i]);
+        btrack(0, 0);
+        printf("%d\n%d", sum, ans[0]);
+        for(int i=1; i<sum; i++)
+            printf(" %d", ans[i]);
         printf("\n");
     }
     return 0;

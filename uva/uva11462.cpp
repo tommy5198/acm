@@ -3,24 +3,16 @@
 #include<algorithm>
 #include<vector>
 using namespace std;
-
+int v[2000000];
 int main(){
     int n;
-    while(scanf("%d",&n)!=EOF){
-        if(!n)
-            break;
-        vector<int> v;
-        while(n--){
-            int t;
-            scanf("%d",&t);
-            v.push_back(t);
-        }
-        sort(v.begin(),v.end());
-        for(vector<int>::iterator it=v.begin();it!=v.end();it++){
-            if(it!=v.begin())
-                printf(" ");
-            printf("%d",*it);
-
+    while(scanf("%d",&n), n){
+        for(int i=0; i<n; i++)
+            scanf("%d", &v[i]);
+        sort(v, v+n);
+        for(int i=0; i<n; i++){
+            if(i)  printf(" ");
+            printf("%d", v[i]);
         }
         printf("\n");
     }

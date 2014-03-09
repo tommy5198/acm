@@ -21,6 +21,7 @@ bool isprime(int t){
 
 int main(){
     int n;
+    std::ios_base::sync_with_stdio(false);
     while(cin>>n){
         if(!n)
             break;
