@@ -54,7 +54,7 @@ int main(){
     scanf("%d", &T);
     while(T--){
         init();
-        printf("%.2lf", sol());
+        printf("%.2lf\n", sol());
         if(T) puts("");
     }
     return 0;
