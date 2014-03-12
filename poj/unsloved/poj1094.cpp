@@ -63,6 +63,7 @@ int main(){
             printf("Sorted sequence determined after %d relations: %s.\n", ok, ans);
         else
             printf("Inconsistency found after %d relations.\n", -ok);
+>>>>>>> dd767a675c7ea26006809f5d4efd2dea6a9d588a
     }
     return 0;
 }
