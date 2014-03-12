@@ -13,9 +13,7 @@ void init(int n){
 }
 
 int FindSet(int x){
-    if(x!=p[x])
-        p[x]=FindSet(p[x]);
-    return p[x];
+    return p[x]==x ? x : p[x]=FindSet(p[x]);
 }
 
 void Link(int a,int b){
@@ -41,21 +39,20 @@ int main(){
 
     int c;
     scanf("%d",&c);
-        int n,m;
-        while(c--){
-            scanf("%d%d",&n,&m);
-            init(n);
-            int a,b;
-            while(m--){
-                scanf("%d%d",&a,&b);
-                Union(a,b);
-            }
-            int M=0;
-            for(int i=0;i<n;i++)
-                if(num[i]>M)
-                    M=num[i];
-            printf("%d\n",M);
+    int n,m;
+    while(c--){
+        scanf("%d%d",&n,&m);
+        init(n);
+        int a,b;
+        while(m--){
+            scanf("%d%d",&a,&b);
+            Union(a,b);
         }
-
+        int M=0;
+        for(int i=0;i<n;i++)
+           if(num[i]>M)
+                M=num[i];
+          printf("%d\n",M);
+    }
     return 0;
 }
