@@ -21,8 +21,10 @@ bool isprime(int t){
 
 int main(){
     string n;
+    std::ios_base::sync_with_stdio(false);
     while(cin>>n){
         int num=0;
+
         for(int i=0;i<n.size();i++)
             if(isalpha(n[i])){
                 if(islower(n[i]))
