@@ -37,7 +37,9 @@ double sol(){
     for(int i=1; i<n; i++)
         pq.push(line[0][i]);
     for(int cnt=0; cnt<n-1; cnt++){
-        tmp = pq.top();
+
+        while(tmp = pq.top(), vis[tmp.b])
+            pq.pop();
         pq.pop();
         vis[tmp.b] = true;
         ans += sqrt(tmp.len);
