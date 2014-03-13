@@ -1,4 +1,4 @@
-//disjoint set
+//disjoint set rewrite by uva10158
 #include<cstdio>
 
 int n, m;
