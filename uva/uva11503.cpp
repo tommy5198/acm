@@ -1,3 +1,4 @@
+//disjoint set
 #include<cstdio>
 #include<map>
 #include<string>
@@ -43,8 +44,11 @@ int main(){
     while(T--){
         init();
         for(int i=0; i<n; i++){
+            char cstr[2][21];
             string str[2];
-            cin>>str[0]>>str[1];
+            scanf("%s%s", cstr[0], cstr[1]);
+            str[0] = cstr[0];
+            str[1] = cstr[1];
             if(!m[str[0]]){
                 p[k] = k;
                 r[k] = 0;
