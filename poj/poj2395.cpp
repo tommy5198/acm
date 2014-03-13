@@ -1,3 +1,4 @@
+//MST bt Kruskal
 #include<cstdio>
 #include<vector>
 #include<algorithm>
@@ -53,7 +54,7 @@ int sol(){
 }
 
 int main(){
-    
+
     init();
     printf("%d\n", sol());
     return 0;
