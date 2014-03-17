@@ -32,7 +32,6 @@ void init(){
     v2.clear();
     while(m--){
         scanf("%d%d%d", &tmp.a, &tmp.b, &tmp.len);
-        L[tmp.a][tmp.b] = L[tmp.b][tmp.a] = tmp.len;
         v.push_back(tmp);
     }
     sort(v.begin(), v.end());
@@ -58,9 +57,10 @@ int Kruskal(){
         if(a != b){
             uni(a, b);
             MST += v[i].len;
+            L[v[i].a][v[i].b] = L[v[i].b][v[i].a] = v[i].len;
         }else{
             v2.push_back(v[i]);
-            L[v[i].a][v[i].b] = L[v[i].b][v[i].a] = 0;
+            //L[v[i].a][v[i].b] = L[v[i].b][v[i].a] = 0;
         }
     }
     return MST;
