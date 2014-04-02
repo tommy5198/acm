@@ -24,8 +24,20 @@ void init(){
     }
 }
 
-void Relax(int u, int v, int w, int c){
-    if(dis[u] + w < dis[v] && cost[u] + c <= k)
+void dfs(int now, int v){
+    if(now == 1){
+        mi = mi<v ? mi : v;
+        return ;
+    }
+    vis[now] = true;
+    for(int i=0; i<b[now].size(); i++)
+        if(!vis[b[now][i].d] && b[now][i].l == m[now])
+            dfs(b[now][i].d, v+b[now][i].t);
+    vis[now] = false;
+}
+
+void Relax(int u, int v, int w){
+    if(dis[u] + w < dis[v])
         dis[v] = dis[u] + w;
 }
 void sol(){
