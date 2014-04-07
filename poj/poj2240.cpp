@@ -43,7 +43,7 @@ bool Relax(int u, int v, double r){
 }
 
 bool sol(){
-    for(int i=0; i<n; i++)
+    for(int i=0; i<n-1; i++)
         for(int j=0; j<m; j++)
             Relax(e[j].u, e[j].v, e[j].r);
     for(int j=0; j<m; j++)
