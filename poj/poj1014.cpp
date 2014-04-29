@@ -7,7 +7,7 @@ bool init(){
     sum = 0;
     for(int i=1; i<=6; i++){
         scanf("%d", n+i);    
-        n[i] = n[i]>6 ? 6 - (n[i]%2) : n[i]; // amazing
+        n[i] = n[i]>8 ? 8 - (n[i]%2) : n[i]; // amazing
         sum += n[i]*i;
     }
     if(!sum) return false;
