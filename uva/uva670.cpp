@@ -1,12 +1,15 @@
+// bimatch
 #include<cstdio>
 #include<cstring>
+#include<cmath>
 
 int n, m;
-int x[200], y[200];
-int mx[200], my[200];
-int A[200], B[200];
-bool e[200][200];
-bool vis[200];
+int x[100], y[100];
+int mx[100], my[100];
+int A[100], B[100];
+bool e[100][100];
+bool vis[100];
+
 
 int dis(int a, int b){
     return (mx[a]-x[b])*(mx[a]-x[b])+(my[a]-y[b])*(my[a]-y[b]);
@@ -26,7 +29,7 @@ void init(){
         scanf("%d%d", mx+i, my+i);
         B[i] = -1;
         for(int j=0; j<n-1; j++){
-            e[j][i] = dis(i, j)+dis(i, j+1) <= 2*dis1(j);
+            e[j][i] = sqrt(dis(i, j))+sqrt(dis(i, j+1)) <= 2*sqrt(dis1(j));
             if(e[j][i] && A[j]<0 && B[i]<0)
                 A[j] = i, B[i] = j;
         }
