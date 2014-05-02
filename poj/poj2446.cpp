@@ -1,3 +1,4 @@
+// bimatch
 #include<cstdio>
 #include<cstring>
 
@@ -10,22 +11,22 @@ bool vis[1200];
 int d[4][2] = { {0,1}, {1,0}, {0,-1}, {-1,0} };
 
 void dfs1(int x, int y, int p, bool LR){
-
     for(int i=0; i<4; i++){
         int tx = x+d[i][0], ty = y+d[i][1];
-        if(!mat[tx][ty]){
-            if(LR){
-                if(!L[p] && !R[r])
-                    L[p] = r, R[r] = p;
-                e[p][r] = true;
-                mat[tx][ty] = r++;
-                dfs1(tx, ty, r-1, !LR);
-            }else{
-                if(!L[l] && !R[p])
-                    L[l] = p, R[p] = l;
-                e[l][p] = true;
+        if(LR){
+            if(!mat[tx][ty]){
                 mat[tx][ty] = l++;
                 dfs1(tx, ty, l-1, !LR);
+            }
+        }else{
+            if(mat[tx][ty] >= 0){
+                int tmp = mat[tx][ty];
+                if(!tmp)
+                    mat[tx][ty] = tmp = r++;
+                e[p][tmp] = true;
+                if(!L[p] && !R[tmp])
+                    L[p] = tmp, R[tmp] = p;
+                dfs1(tx, ty, l, !LR);
             }
         }
     }
@@ -48,7 +49,7 @@ void init(){
         for(int j=1; j<=m; j++)
             if(!mat[i][j]){
                 mat[i][j] = l++;
-                dfs1(i, j, l-1, true);
+                dfs1(i, j, l-1, false);
             }
 }
 
