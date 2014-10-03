@@ -1,4 +1,4 @@
-#include<iostream>
+#include<cstdio>
 #include<algorithm>
 #include<vector>
 using namespace std;
@@ -21,27 +21,27 @@ bool cmp(j x,j y){
 int main(){
     int m;
     int b=0;
-    while(cin>>m){
+    while(scanf("%d", &m) != EOF){
         int bb=m;
         while(m--){
             if(bb!=m&&b)
-                cout<<endl;
+                puts("");
             b=1;
             int n;
 
-            cin>>n;
+            scanf("%d", &n);
             j c[n];
             for(int i=0;i<n;i++){
-                cin>>c[i].d>>c[i].p;
+                scanf("%d%d", &c[i].d, &c[i].p);
                 c[i].n=i+1;
             }
             sort(c,c+n,cmp);
             for(int i=0;i<n;i++){
-                cout<<c[i].n;
+                printf("%d", c[i].n);
                 if(i!=n-1)
-                    cout<<" ";
+                    printf(" ");
             }
-            cout<<endl;
+            puts("");
         }
     }
 

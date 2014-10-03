@@ -2,6 +2,10 @@
 
 int main(){
     int n;
+    int asdfqwe;
+    int asdfrewg;
+    int asdfglprw;
+    
     while(scanf("%d", &n), n){
         int tmp;
         while(n > 9){

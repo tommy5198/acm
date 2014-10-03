@@ -1,4 +1,4 @@
-// kmp
+// prefix
 #include<cstdio>
 #include<cstring>
 char str[1000001];
