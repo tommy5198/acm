@@ -1,0 +1,119 @@
+\documentclass[a4paper]{amsart}
+\usepackage[pdftex]{geometry}
+\usepackage{graphicx}
+\usepackage[utf8]{inputenc}
+\usepackage{xeCJK}
+\usepackage{listings}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{courier}
+\usepackage{fancyhdr}
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{fancyvrb}
+
+% redefine \VerbatimInput
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}%
+{fontsize=\footnotesize,
+ %
+ frame=lines,  % top and bottom rule only
+ framesep=2em, % separation between frame and text
+ rulecolor=\color{Gray},
+ %
+ label=\fbox{\color{Black}data.txt},
+ labelposition=topline,
+ %
+ %commandchars=\|\(\), % escape character and argument delimiters for
+                       % commands within the verbatim
+ %                       commentchar=*        % comment character
+}
+
+\setCJKmainfont{文泉驛等寬正黑} %設定中文為系統上的字型，而英文不去更動，使用原TeX字型
+\XeTeXlinebreaklocale "zh"             %這兩行一定要加，中文才能自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt     %這兩行一定要加，中文才能自動換行
+
+\lstset{language=C++}
+\lstset{extendedchars=false}
+\lstset{columns=fullflexible}
+\lstset{basicstyle=\scriptsize\ttfamily}
+\lstset{showspaces=false}
+\lstset{prebreak=\raisebox{0ex}[0ex][0ex]{}}
+\lstset{postbreak=\raisebox{0ex}[0ex][0ex]{}}
+\lstset{breaklines=true, breakatwhitespace=true}
+\lstset{numbers=left, numberstyle=\scriptsize}
+
+\geometry{landscape}
+\setlength{\topmargin}{-0.25in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\columnsep}{1in}
+\setlength{\columnseprule}{0.2pt}
+\textwidth 9.5in
+
+\pagestyle{fancy}
+\lhead{National Cheng Kung University - VIMers}
+\chead{}
+\rhead{\thepage}
+\lfoot{}
+\cfoot{}
+\rfoot{}
+
+\newcommand{\includecpp}[1]{
+    \section{#1}
+    \lstinputlisting[language=c++]{./#1.cpp}
+}
+
+\newcommand{\stirlingfirst}[2]{\genfrac{[}{]}{0pt}{}{#1}{#2}}
+\newcommand{\stirlingsecond}[2]{\genfrac{\{}{\}}{0pt}{}{#1}{#2}}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+
+\begin{document}
+  \thispagestyle{fancy}
+  \begin{center}
+    \Huge\textsc{ACM ICPC \\ Regional 2014}
+
+  \end{center}
+
+  \begin{multicols}{3}
+    \tableofcontents
+    \includecpp{2-DBinaryIndexedTree}
+    \includecpp{Articulation}
+    \includecpp{bellman}
+    \includecpp{Josephus}
+    \includecpp{kmp}
+    \includecpp{Dinic}
+    \includecpp{EularsPhi}
+    \includecpp{extendGCD}
+    \includecpp{Maxflow-EK}
+    \includecpp{LISnlgn}
+    \includecpp{MCMF}
+    \includecpp{MinimumEnclosingCircle}
+    \includecpp{MinimumVertexCover}
+    \includecpp{geometry}
+    \includecpp{Dijkstra}
+    \includecpp{MSS}
+    \includecpp{scc}
+    \includecpp{SPFA}
+    \includecpp{coinchange}
+    \includecpp{DancingLinkAlgorithmX}
+    \includecpp{BipartiteMatching}
+    \includecpp{CantorExpansion}
+  \section{Trick}
+ \input{trick.txt}
+  \end{multicols}
+ %o \VerbatimInput{trick.txt}
+  \enlargethispage*{\baselineskip}
+  %\pagebreak
+
+  \begin{center}
+    \Huge\textsc{ACM ICPC Team Reference - Content}
+
+    \vspace{0.35cm}
+
+    \huge National Cheng Kung University - VIMers
+
+    \vspace{0.35cm}
+
+  \end{center}
+\end{document}

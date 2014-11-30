@@ -1,0 +1,160 @@
+
+  \begin{verbatim}
+[比賽技巧]
+<Flow>
+*點只能使用k次=>把點拆成兩個點,flow為k
+ => 若點的indeg或outdeg只有一條邊，
+    則不用拆點，該點確定只能使用一次
+*邊只能使用k次=>把邊的flow設成k
+
+<MCMF使用時機>
+基本款:
+1. 給定每個邊的cost跟flow
+   要求最大flow下的最小cost
+變形款:
+1. Matching+minCost
+2. 每條路只能走一次
+   從起點到終點的最小cost
+   (至少兩條path以上)=>一條PATH只要SPFA就好
+
+<KMP應用>
+prefix function:
+給字串S(長度L)
+問可以用子字串A的k次方表示   k=?
+=>
+求出pi後
+1. 若L/(L-pi[L])不整除 => k=1
+2. 否則k最大為L/(L-pi[L])
+
+<LinearProgramming差分約束>
+也叫做線性規劃、Difference Constraint
+1. Xa - Xb <= c		等同於
+Xb 到 Xa 的單向邊 權重為c
+2. Xa - Xb = c		轉換成
+Xa - Xb <= c ,	Xa - Xb >= c (也就是 Xb - Xa <= -c)
+3.
+建立一個super node
+從此點到其他所有點
+建立單向邊 權重為0
+4.
+進行SSSP
+最後更新出來的dis[i]值
+代表其中的一組可行解
+其距離原點的大小
+5.
+如果有負環出現
+代表矛盾、無解
+註:
+SPFA一個node最多更新V-1次，
+當count>=V時，有負環；
+Bellman Ford更新V-1次edge，
+再更新一次，若可以relax，有負環
+
+<樹的特性>
+1. 任兩點存在一條path, 且唯一
+2. n個node剛好有n-1條edge
+
+<Maximum Weight Bipartite Matching>
+使用flow來model:
+左邊n個點，右邊m個點
+    0~左邊: cost 0, capacity 1
+ 左邊~右邊: cost -weight, capacity 1
+右邊~n+m+1: cost 0, capacity 1
+求MCMF
+最後輸出-MCMF即可
+
+<角度計算>
+1. 旋轉點為(0,0)，以x軸正向為轉軸:
+=> (x,y)的逆時針旋轉角度為atan2(y,x)  
+// 為徑度，度=360*徑度/2pi
+  // 若atan2為負，代表順時針轉-atan2(y,x)，
+也代表逆時針轉360.0+atan2(y,x)度
+2. 旋轉點不為(0,0)，而是求兩向量的夾角:(旋轉點共點)
+=> 以到旋轉點的距離當作轉軸(等同法1的平移)
+
+<切木頭問題>
+Q1: 給定木條總長度，某些位置要切，問最少cost
+     // cost為當次切時(無論位置)木條剩餘的長度
+Sol: 定義dp[i][j]代表從pos[i]~pos[j]所需要的min cost
+     則dp[i][j]=(pos[j]-pos[i])+min(dp[i][k]+dp[k][j])
+     k從i+1~j-1，而pos[0]=0，pos[最後]=len
+ 	=>  DP
+Q2: 給定木條總長度，要切成某些長度的木條，
+問最少cost
+     // cost為當次切時木條剩餘長度
+Sol: 由於不限位置，所以反向思考，
+由最小的兩條開始拼裝
+     保持一個min_heap，
+每次找拼裝起來最小的兩條來拚
+     並加總cost後，丟進min_heap，
+直到heap剩下一個為止
+ =>  Greedy
+
+<博弈理論>
+1. 拿石頭問題
+	總共有n堆石頭，每堆有ni個石頭
+     A,B兩玩家輪流拿石頭，每次只能從一堆選
+     至少拿一顆，最多整堆拿走，
+拿走最後一顆石頭的獲勝
+     由A開始拿，問最後A是贏還是輸?
+Sol:
+把n個數字做XOR，大於0就贏，等於0就輸
+
+<Bipartite Matching應用>
+設左邊A右邊B，Maximum Bipartite Matching數=k:
+1. Maximum Independent Set
+   則答案為 |A|+|B|-k
+2. Minimum Vertex Cover
+   則答案為 k
+*會在Minimum Vertex Cover出現的Vertex
+ 絕對不會出現在Maximum Independent Set
+ 且兩者互補!
+ \end{verbatim}
+ \includegraphics[width=2.046cm,height=2.718cm]{LIB-img001.png} 
+ \begin{verbatim}
+ 1.6為Minimum Vertex Cover
+其餘為Maximum Independent Set
+3. Minimum Edge Cover
+   先求出 k 後，對於所有未匹配的點(共h個)，
+   必可由以匹配點連過去，則答案為 k+h
+
+<Pick’s Theorem>
+ 
+ \end{verbatim}
+ \includegraphics[width=3.24cm,height=2.692cm]{LIB-img002.png}  
+ \begin{verbatim}
+A=10, I=7, E=8
+關係式: A = I + E/2 -1
+
+< Chromatic polynomial >
+完全圖Kn:		t(t-1)(t-2)…(t - (n-1))
+n vertices tree:	t * (t-1) ^ (n-1)
+Cycle Cn:		(t-1) ^ (n-1)   +   (-1) ^ ( n )*(t-1)
+
+G / uv : 	merge u , v
+G – uv : 	removed uv
+G + uv:	add uv
+P(G , k) = P(G – uv , k) – P(G / uv , k)
+
+<數學式>
+直線ax + by + c = 0 點(x0 , y0)到直線距離:
+
+ \end{verbatim}
+ \includegraphics[width=2.514cm,height=1.302cm]{LIB-img003.png} 
+ \begin{verbatim}
+< Euler characteristic歐拉示性數>
+
+ \end{verbatim}
+ \includegraphics[width=3.657cm,height=0.34cm]{LIB-img004.png} 
+ \begin{verbatim}
+
+< maximal cliques >
+   BronKerbosch1(R, P, X):
+       if P and X are both empty:
+           report R as a maximal clique
+       for each vertex v in P:
+           BronKerbosch1(R ⋃ {v}, P ⋂ N(v), X ⋂ N(v))
+           P := P \ {v}
+           X := X ⋃ {v}
+
+ \end{verbatim}
