@@ -1,0 +1,4 @@
+record light status in each combination of given prime numbers <= sqrt(n)
+foreach combination status, enumerate rest of primes, add it if lightup number increase，the maximun is the anwser
+
+

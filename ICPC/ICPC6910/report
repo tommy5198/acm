@@ -1,0 +1,6 @@
+record all query, ignore Q, 
+       if C then set root[a]=0 and cut[a]++
+reverse all query, 
+        if Q then ans is two roots equal or not, 
+        if C and first cut then set root[a]=oroot[a]
+        else cut[a]--
