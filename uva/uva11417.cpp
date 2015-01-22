@@ -1,10 +1,9 @@
+// GCD
 #include<cstdio>
 
 int GCD(int a, int b)
 {
-    int d;
-    for (d=a; !(a%d==0 && b%d==0); d--) ;
-    return d;
+    return b ? GCD(b, a%b) : a;
 }
 
 int main(){
