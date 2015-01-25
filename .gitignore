@@ -7,5 +7,6 @@
 *.swp
 *.txt
 *~
+*.pdf
 !/lib/*
 
