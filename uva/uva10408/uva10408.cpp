@@ -8,24 +8,6 @@ double gcd(int a, int b)
 {
 	return a%b ? gcd(b, a%b) : b;
 }
-struct Num {
-	double a, b;
-	bool operator<(const Num &t)const
-	{
-		return a/b > t.a/t.b;
-	}
-	bool operator==(const Num &t)const
-	{
-		return fabs(a/b - t.a/t.b) < eps;
-	}
-	void print()const
-	{
-		double gc = gcd(a, b);
-		printf("%.0lf/%.0lf\n", a/gc, b/gc);
-	}
-};
-
-priority_queue<Num> Q;
 
 int main() {
 	int n, k;
@@ -39,9 +21,6 @@ int main() {
 			y = ny;
 			nx = k*x - px;
 			ny = k*y - py;
-			int g = gcd(x, y);
-			nx = nx/g;
-			ny = ny/g;
 		}
 		printf("%d/%d\n", nx, ny);
 	}
