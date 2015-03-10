@@ -1,4 +1,6 @@
 *.o
+out
+in
 *.exe
 *.in
 *.out

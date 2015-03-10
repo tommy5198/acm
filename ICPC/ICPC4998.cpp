@@ -5,6 +5,11 @@ long long HMOD = 1000000LL;
 long long ab[40];
 long long a;
 
+// to avoid overflow we set HMOD(hm) = sqrt(MOD) = 10^6
+// a * b -> a = (a/hm)*hm + a%hm, b = (b/hm)*hm + b%hm
+// a * b = (a/hm + a%hm) * (b/hm + b%hm)
+// (a/hm)*hm * (b/hm)*hm can be ignore cuz it % MOD become 0
+// and (a/hm)*hm * b%hm + (b/hm)*hm * a%hm is bounded to HMOD * MOD = 10^18 < 2^63-1, SAVE!! 
 long long mul(long long a, long long b){
     long long x = a/HMOD, X = a%HMOD;
     long long y = b/HMOD, Y = b%HMOD;
@@ -17,9 +22,6 @@ long long poow( long long a,  long long b){
     for(int i=0; b; i++, b>>=1)
         if(b&1)
             ans = mul(ans, ab[i]);
-        
-
-
     return ans;
 }
 
