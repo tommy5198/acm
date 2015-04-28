@@ -1,6 +1,8 @@
 #include<cstdio>
 #include<algorithm>
 #include<cstring>
+#include<cstdlib>
+#include<time.h>
 using namespace std;
 
 const int X = 1000;   // X的點數目，等於Y的點數目
@@ -120,6 +122,7 @@ int Hungarian()
 }
 int main(){
     int T;
+    printf("%lld\n", time(NULL));
     scanf("%d", &T);
     while(T--) {
         scanf("%d", &n);
@@ -128,5 +131,6 @@ int main(){
                 scanf("%d", adj[i]+j);
         printf("%d\n", Hungarian());
     }
+    printf("%lld\n", time(NULL));
     return 0;
 }

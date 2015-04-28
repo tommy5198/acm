@@ -1,3 +1,4 @@
+// s
 #include<cstdio>
 #define INF 1000000000
 
